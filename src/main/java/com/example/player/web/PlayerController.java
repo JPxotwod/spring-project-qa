@@ -38,40 +38,40 @@ public class PlayerController {
 	}
 
 	@GetMapping("/getAll") // 200 - ok status code
-	public ResponseEntity<List<Dog>> getAllPupps() {
+	public ResponseEntity<List<Player>> getAllPlayers() {
 		return ResponseEntity.ok(this.service.getAll());
 	}
 
 	@GetMapping("/get/{id}") // 200 - ok status code
-	public Dog getDog(@PathVariable Integer id) {
+	public Player getPlayer(@PathVariable Integer id) {
 		return this.service.getOne(id);
 
 	}
 
 	@PutMapping("/replace/{id}") // 202 - accepted status code
-	public ResponseEntity<Dog> replaceDog(@PathVariable Integer id, @RequestBody Dog newDog) {
-		Dog body = this.service.replace(id, newDog);
-		ResponseEntity<Dog> response = new ResponseEntity<Dog>(body, HttpStatus.ACCEPTED);
+	public ResponseEntity<Player> replaceDog(@PathVariable Integer id, @RequestBody Player newPlayer) {
+		Player body = this.service.replace(id, newPlayer);
+		ResponseEntity<Player> response = new ResponseEntity<Player>(body, HttpStatus.ACCEPTED);
 		return response;
 	}
 
 	@DeleteMapping("/remove/{id}") // 204 - no content status code
-	public ResponseEntity<?> removeDog(@PathVariable Integer id) {
+	public ResponseEntity<?> removePlayer(@PathVariable Integer id) {
 		this.service.remove(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	@GetMapping("/getByName/{name}") // 200 - ok status code
-	public ResponseEntity<List<Dog>> getDogByName(@PathVariable String name) {
-		List<Dog> found = this.service.getPuppsByName(name);
+	public ResponseEntity<List<Player>> getPlayerByName(@PathVariable String name) {
+		List<Player> found = this.service.getPlayersByName(name);
 		return ResponseEntity.ok(found);
 	}
 	
-	@GetMapping("/getByAge/{age}") // 200 - ok status code
-	public ResponseEntity<List<Dog>> getDogByAge(@PathVariable Integer age) {
-		List<Dog> found = this.service.getAllPuppsByAge(age);
+	@GetMapping("/getByNumber/{Number}") // 200 - ok status code
+	public ResponseEntity<List<Player>> getPlayerByNumber(@PathVariable Integer number) {
+		List<Player> found = this.service.getAllPlayersByNumber(number);
 		return ResponseEntity.ok(found);
 	}
 }
 	
-}
+
