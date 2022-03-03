@@ -67,7 +67,7 @@ public class PlayerController {
 		return ResponseEntity.ok(found);
 	}
 	
-	@GetMapping("/getByNumber/{Number}") // 200 - ok status code
+	@GetMapping("/getByNumber/{number}") // 200 - ok status code
 	public ResponseEntity<List<Player>> getPlayerByNumber(@PathVariable Integer number) {
 		List<Player> found = this.service.getAllPlayersByNumber(number);
 		return ResponseEntity.ok(found);
