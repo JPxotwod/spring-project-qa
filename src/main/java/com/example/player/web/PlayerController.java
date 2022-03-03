@@ -30,7 +30,7 @@ public class PlayerController {
 	}
 
 	@PostMapping("/create") // @RequestBody pulls the parameter from the body of the request
-	public ResponseEntity<Player> createDog(@RequestBody Player p) {
+	public ResponseEntity<Player> createPlayer(@RequestBody Player p) {
 		Player created = this.service.create(p);
 		ResponseEntity<Player> response = new ResponseEntity<Player>(created, HttpStatus.CREATED); // 201 - created status
 																								// code
@@ -49,7 +49,7 @@ public class PlayerController {
 	}
 
 	@PutMapping("/replace/{id}") // 202 - accepted status code
-	public ResponseEntity<Player> replaceDog(@PathVariable Integer id, @RequestBody Player newPlayer) {
+	public ResponseEntity<Player> replacePlayer(@PathVariable Integer id, @RequestBody Player newPlayer) {
 		Player body = this.service.replace(id, newPlayer);
 		ResponseEntity<Player> response = new ResponseEntity<Player>(body, HttpStatus.ACCEPTED);
 		return response;
