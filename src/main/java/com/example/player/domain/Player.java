@@ -12,7 +12,7 @@ public class Player {
 	@Id //PRIMARY KEY
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO INCREMENT
-	private Integer playerid;
+	private Integer id;
 	
     @Column(nullable = false)
 	private String name;
@@ -24,21 +24,25 @@ public class Player {
 	
 	private Integer number;
 
-	public Player(Integer playerid, String name, String position, String team, Integer number) {
+	public Player(Integer id, String name, String position, String team, Integer number) {
 		super();
-		this.playerid = playerid;
+		this.id = id;
 		this.name = name;
 		this.position = position;
 		this.team = team;
 		this.number = number;
 	}
-
-	public Integer getPlayerid() {
-		return playerid;
+	
+	public Player() {
+		super();
 	}
 
-	public void setPlayerid(Integer playerid) {
-		this.playerid = playerid;
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -75,7 +79,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return "Player [playerid=" + playerid + ", name=" + name + ", position=" + position + ", team=" + team
+		return "Player [id=" + id + ", name=" + name + ", position=" + position + ", team=" + team
 				+ ", number=" + number + "]";
 	}
 	

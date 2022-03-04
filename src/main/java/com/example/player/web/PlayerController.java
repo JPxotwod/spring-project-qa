@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.player.domain.Player;
 import com.example.player.service.PlayerService;
-
+@RestController
 public class PlayerController {
 
 	// ResponseEntity - an extension of HttpEntity that represents an Http response
@@ -22,8 +23,8 @@ public class PlayerController {
 
 	private PlayerService service;
 
-	@Autowired // tells Spring to fetch the PersonService from the context - dependency
-				// injection
+	 // tells Spring to fetch the PersonService from the context - dependency
+	@Autowired 		// injection
 	public PlayerController(PlayerService service) {
 		super();
 		this.service = service;

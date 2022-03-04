@@ -39,11 +39,11 @@ public class PlayerControllerIntegrationTest {
 
 	@Test
 	void testCreate() throws Exception {
-		Player testPlayer = new Player(null, "Lionel Messi", "PSG", "Attacker", 30);
+		Player testPlayer = new Player(null, "Neymar", "Attacker", "PSG", 10);
 		String testPlayerAsJSON = this.mapper.writeValueAsString(testPlayer);
 		RequestBuilder req = post("/create").contentType(MediaType.APPLICATION_JSON).content(testPlayerAsJSON);
 
-		Player testCreatedPlayer = new Player(1, "Lionel Messi", "PSG", "Attacker", 30);
+		Player testCreatedPlayer = new Player(3, "Neymar", "Attacker", "PSG", 10);
 		String testCreatedPlayerAsJSON = this.mapper.writeValueAsString(testCreatedPlayer);
 		ResultMatcher checkStatus = status().isCreated(); // status 201 - created
 		ResultMatcher checkBody = content().json(testCreatedPlayerAsJSON); // check created body
@@ -54,7 +54,7 @@ public class PlayerControllerIntegrationTest {
 	@Test
 	void getAllTest() throws Exception {
 		RequestBuilder req = get("/getAll");
-		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "PSG", "Attacker", 30), new Player(2, "Cristiano Ronaldo", "Man U", "Attacker", 7));
+		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "Attacker", "PSG", 30), new Player(2, "Cristiano Ronaldo", "Attacker", "Man U", 7));
 		String json = this.mapper.writeValueAsString(testPlayer);
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(json);
@@ -65,7 +65,7 @@ public class PlayerControllerIntegrationTest {
 	@Test
 	void testGetById() throws Exception {
 		RequestBuilder req = get("/get/1");
-		Player testPlayer = new Player(1, "Lionel Messi", "PSG", "Attacker", 30);
+		Player testPlayer = new Player(1, "Lionel Messi", "Attacker", "PSG", 30);
 		String testGetByIdAsJSON = this.mapper.writeValueAsString(testPlayer);
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(testGetByIdAsJSON);
@@ -75,7 +75,7 @@ public class PlayerControllerIntegrationTest {
 	@Test
 	void testGetByName() throws Exception {
 		RequestBuilder req = get("/getByName/Lionel Messi");
-		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "PSG", "Attacker", 30);
+		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "Attacker", "PSG", 30));
 		String testGetByNameAsJSON = this.mapper.writeValueAsString(testPlayer);
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(testGetByNameAsJSON);
@@ -85,7 +85,7 @@ public class PlayerControllerIntegrationTest {
 	@Test
 	void testGetByNumber() throws Exception {
 		RequestBuilder req = get("/getByNumber/30");
-		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "PSG", "Attacker", 30);
+		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "Attacker", "PSG", 30));
 		String testGetByNumberAsJSON = this.mapper.writeValueAsString(testPlayer);
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(testGetByNumberAsJSON);
