@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.player.domain.Player;
 import com.example.player.service.PlayerService;
-
+@RestController
 public class PlayerController {
 
 	// ResponseEntity - an extension of HttpEntity that represents an Http response
@@ -22,15 +23,15 @@ public class PlayerController {
 
 	private PlayerService service;
 
-	@Autowired // tells Spring to fetch the PersonService from the context - dependency
-				// injection
+	 // tells Spring to fetch the PersonService from the context - dependency
+	@Autowired 		// injection
 	public PlayerController(PlayerService service) {
 		super();
 		this.service = service;
 	}
 
 	@PostMapping("/create") // @RequestBody pulls the parameter from the body of the request
-	public ResponseEntity<Player> createDog(@RequestBody Player p) {
+	public ResponseEntity<Player> createPlayer(@RequestBody Player p) {
 		Player created = this.service.create(p);
 		ResponseEntity<Player> response = new ResponseEntity<Player>(created, HttpStatus.CREATED); // 201 - created status
 																								// code
@@ -49,7 +50,7 @@ public class PlayerController {
 	}
 
 	@PutMapping("/replace/{id}") // 202 - accepted status code
-	public ResponseEntity<Player> replaceDog(@PathVariable Integer id, @RequestBody Player newPlayer) {
+	public ResponseEntity<Player> replacePlayer(@PathVariable Integer id, @RequestBody Player newPlayer) {
 		Player body = this.service.replace(id, newPlayer);
 		ResponseEntity<Player> response = new ResponseEntity<Player>(body, HttpStatus.ACCEPTED);
 		return response;
@@ -67,7 +68,7 @@ public class PlayerController {
 		return ResponseEntity.ok(found);
 	}
 	
-	@GetMapping("/getByNumber/{Number}") // 200 - ok status code
+	@GetMapping("/getByNumber/{number}") // 200 - ok status code
 	public ResponseEntity<List<Player>> getPlayerByNumber(@PathVariable Integer number) {
 		List<Player> found = this.service.getAllPlayersByNumber(number);
 		return ResponseEntity.ok(found);
