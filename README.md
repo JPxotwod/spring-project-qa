@@ -3,7 +3,7 @@ This is my second individual project for QA.
 This README.md file will focus just on the back-end of the project.
 
 Here you will find a link to my Jira board: https://josephp123.atlassian.net/jira/software/projects/QSP/boards/4/backlog
-Here you will find the link to repository on GitHub: https://github.com/JPxotwod/spring-project-qa
+Here you will find the link to the back-end repository on GitHub: https://github.com/JPxotwod/spring-project-qa
 ALL DOCUMENTATION AND SO ON WILL BE FOUND IN THIS REPO.
 
 Coverage: 93.4%.
@@ -69,6 +69,18 @@ The testing carried out for my back-end was both integration and unit testing.
 
 Integration testing was carried out using MockMVC to make sure the program was working. MockMVC was used to create a mocked controller class and would perform mock HTTP requests as like a user of a particular program, ultimately testing the outcomes of each request.
 Unit testing was carried out with JUnit and Mockito to test each part of the program, making sure individual parts were working as they should.
+
+An example of testing:
+	@Test
+	void getAllTest() throws Exception {
+		RequestBuilder req = get("/getAll");
+		List<Player> testPlayer = List.of(new Player(1, "Lionel Messi", "Attacker", "PSG", 30), new Player(2, "Cristiano Ronaldo", "Attacker", "Man U", 7));
+		String json = this.mapper.writeValueAsString(testPlayer);
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkBody = content().json(json);
+		// sends the request and then checks the status in the body
+		this.mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+	}
 
 
 Front-End will be covered in a separate README.md in the appropriate repository.
