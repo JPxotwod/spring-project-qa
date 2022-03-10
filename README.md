@@ -42,7 +42,7 @@ Front-End Development - Functioning front-end website with API integration (deta
 
 Planning Resources:
 
-Using Jira, I created a Kanban Boaard and Roadmap modelled as a SCRUM aswell as creating User Stories and Epics in order to help break down and organise the project into smaller and more manageable objectives.
+Using Jira, I created a Kanban Board and Roadmap modelled as a SCRUM aswell as creating User Stories and Epics in order to help break down and organise the project into smaller and more manageable objectives.
 Within the User Stories, I created linked child issues for the front and back-end of my project to help the structure of the build. In total I have 4 Epics, all with multiple User Stories. An example will be shown within my presentation which you will also be able to find within this repository.
 Throughout the project I completed various sprints, with issues being grouped into different sections, often based on priority or requirements.
 
@@ -83,4 +83,4 @@ API Development Platform - Spring,
 Front-end web technologies - HTML, CSS, JavaScript,
 Build Tool - Maven,
 Unit Testing - JUnit,
-Integration Testing - Mockito,
+Integration Testing - Mockito.
